@@ -14,6 +14,10 @@ public class TwoStrings {
      *  2. STRING s2
      */
     public static String twoStrings(String s1, String s2) {
+        return matchedStrings(s1, s2) ? "YES" : "NO";
+    }
+
+    private static boolean matchedStrings(String s1, String s2) {
         Map<Character, Integer> charFreq = new HashMap<>();
         for (int i = 0; i < s1.length() / 2; i++) {
             char currentChar = s1.charAt(i);
@@ -24,10 +28,10 @@ public class TwoStrings {
         }
         for (int i = 0; i < s2.length() / 2; i++) {
             if (isMatched(s2, charFreq, i)) {
-                return "YES";
+                return true;
             }
         }
-        return "NO";
+        return false;
     }
 
     private static boolean isMatched(String s2, Map<Character, Integer> charFreq, int i) {
